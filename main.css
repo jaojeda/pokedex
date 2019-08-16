@@ -9,14 +9,12 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-content: space-around;   
+    align-items: center;  
 }
 
 .options-button {
     height: 80%;
     width: auto;
-    padding: 0;
-    margin: 0;
 }
 
 .options-container {
@@ -24,26 +22,78 @@ header {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    height: 12vh;
+    height: 10vh;
     width: auto;
     background-color: gainsboro;
 }
 
-.search-bar { 
+.search-bar {
+    height: 30px;
     width: 50vw;
     border-radius: 25px;
 }
 
 .sorter {
-    border-radius: 25px;
+    height: 30px;
     width: 50vw;
+    border-radius: 25px;
+}
+
+@media (min-width: 700px) {
+    .options-container{
+        float: left;
+        height: 80vh;
+        flex-direction: column;
+        justify-content: start;
+        width: 25vw;
+    }
+    .search-bar {
+        width: 20vw;
+        border-radius: 25px;
+        margin-top: 20px;
+    }
+    
+    .sorter {
+        border-radius: 25px;
+        width: 20vw;
+        margin-top: 20px;
+    }
+
+    footer {
+        clear: left;
+    }
+}
+
+@media (min-width: 1000px) {
+    .options-container{
+        float: left;
+        height: 80vh;
+        flex-direction: column;
+        justify-content: start;
+        width: 20vw;
+    }
+    .search-bar {
+        width: 15vw;
+        border-radius: 25px;
+        margin-top: 20px;
+    }
+    
+    .sorter {
+        border-radius: 25px;
+        width: 15vw;
+        margin-top: 20px;
+    }
+
+    footer {
+        clear: left;
+    }
 }
 
 .pokedex-section {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    height: 70vh;
+    height: 80vh;
     width: auto;
     background-color: aliceblue;
     overflow: scroll;
@@ -67,8 +117,8 @@ header {
     border: 1px solid #aaa;
     border-radius: 5px;
     background-color: lightblue; 
-    margin-top: 0px;
-    margin-right: 5px;
+    margin-top: 10px;
+    margin-right: 10px;
     margin-bottom: 5px;
     margin-left: 0px;
     padding: 5px;
