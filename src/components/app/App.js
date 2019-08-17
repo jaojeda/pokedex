@@ -2,6 +2,7 @@ import Component from '../Component.js';
 import Header from './Header.js';
 import PokemonList from '../pokedex/PokemonList.js';
 import pokemon from '../data/pokemon.js';
+import FilterType from '../options/FilterType.js';
 
 
 class App extends Component {
@@ -22,6 +23,33 @@ class App extends Component {
         const pokedexSection = dom.querySelector('.pokedex-section');
         pokedexSection.appendChild(pokemonListDOM);
         
+        const filterPokemonCards = {
+            pokemon: pokemon,
+            onFilter: (pokemonType) => {
+                let filteredPokemon;
+                if(pokemonType === 'all') {
+                    filteredPokemon = pokemon;
+                }
+                else if(pokemonType === pokemon.type_1) {
+                    filteredPokemon = pokemon.filter(pokemon => {
+                        return pokemon.type_1 === pokemonType;
+                    });
+                }
+                else {
+                    filteredPokemon = pokemon.filter(pokemon => {
+                        return pokemon.type_2 === pokemonType;
+                    });
+                }
+
+                const updateProps = { pokemon: filteredPokemon };
+                pokemonList.update(updateProps);
+            }
+        };
+        const filterPokemon = new FilterType(filterPokemonCards);
+        const filterPokemonDOM = filterPokemon.renderDOM();
+
+        const optionsSection = dom.querySelector('.options-container');
+        optionsSection.appendChild(filterPokemonDOM);
     }
 
     renderHTML() {
