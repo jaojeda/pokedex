@@ -1,10 +1,10 @@
-import renderPokemonCard from '../src/components/pokedex/render-pokemon-card.js';
+import PokemonCard from '../src/components/pokedex/PokemonCard.js';
 
 const test = QUnit.test;
 
 QUnit.module('Render Pokemon Card');
 
-test('render pokemon info from data', (assert) => {
+test('render html from data', assert => {
     const pokemon = {  
         '_id': '5cef3501ef6005a77cd4fd1a',
         'pokemon': 'charmander',
@@ -55,7 +55,9 @@ test('render pokemon info from data', (assert) => {
         </li>
     `;
 
-    const html = renderPokemonCard(pokemon);
+    const props = { pokemon: pokemon };
+    const pokemonCard = new PokemonCard(props);
+    const html = pokemonCard.renderHTML();
 
     assert.htmlEqual(html, expected);
 });

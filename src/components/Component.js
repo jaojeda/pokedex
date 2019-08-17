@@ -5,7 +5,7 @@ class Component {
         this.props = props || {};
         this.state = {};
     }
-
+ 
     onRender(/*dom*/) {
         // no-op
     }

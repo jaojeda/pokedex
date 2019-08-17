@@ -10,7 +10,8 @@ export default function renderPokemonCard(pokemon) {
                 <img src="${pokemon.url_image}" alt="${pokemon.pokemon}">
             </div>
             <div class="type-container">
-                <p class="type">${pokemon.type_1}</p>
+                <p class="type ${pokemon.type_1}">${pokemon.type_1}</p>
+                <p class="type ${pokemon.type_2}">${pokemon.type_2}</p>
             </div>
         </li>
     `;

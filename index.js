@@ -1,6 +1,6 @@
 import App from './src/components/app/App.js';
 
-cosnt root = document.getElementById('root');
+const root = document.getElementById('root');
 const app = new App();
 
 const dom = app.renderDOM();
