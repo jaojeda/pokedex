@@ -6,6 +6,7 @@ import FilterType from '../options/FilterType.js';
 import Paging from '../options/Paging.js';
 import { getPokeData } from '../services/pokemon-api.js';
 import hashStorage from '../services/hash-storage.js';
+import Search from '../options/Search.js';
 
 
 class App extends Component {
@@ -14,6 +15,10 @@ class App extends Component {
         const header = new Header();
         const headerDOM = header.renderDOM();
         dom.prepend(headerDOM);
+
+        const optionsSection = dom.querySelector('.options-container');
+        const search = new Search();
+        optionsSection.appendChild(search.renderDOM());
 
         const props = {
             pokemon: []    
@@ -69,10 +74,9 @@ class App extends Component {
                     const filterPokemon = new FilterType(filterPokemonCards);
                     const filterPokemonDOM = filterPokemon.renderDOM();
                 
-                    const optionsSection = dom.querySelector('.options-container');
-                    if(optionsSection.firstChild) {
-                        optionsSection.removeChild(optionsSection.firstChild);
-                    }
+                    // if(optionsSection.firstChild) {
+                    //     optionsSection.removeChild(optionsSection.firstChild);
+                    // }
                     optionsSection.appendChild(filterPokemonDOM);
                     
                 });                 
