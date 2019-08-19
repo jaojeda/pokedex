@@ -1,0 +1,14 @@
+header {
+    height: 10vh;
+    width: auto;
+    background-color: red;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;  
+}
+
+.options-button {
+    height: 80%;
+    width: auto;
+}

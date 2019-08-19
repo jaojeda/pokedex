@@ -1,0 +1,253 @@
+* {
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+header {
+    height: 10vh;
+    width: auto;
+    background-color: red;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;  
+}
+
+.options-button {
+    height: 80%;
+    width: auto;
+}
+
+.options-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 10vh;
+    width: auto;
+    background-color: gainsboro;
+}
+
+.search-bar {
+    height: 30px;
+    width: 50vw;
+    border-radius: 25px;
+}
+
+.sorter {
+    height: 30px;
+    width: 50vw;
+    border-radius: 25px;
+}
+
+@media (min-width: 700px) {
+    .options-container{
+        float: left;
+        height: 80vh;
+        flex-direction: column;
+        justify-content: start;
+        width: 25vw;
+    }
+    .search-bar {
+        width: 20vw;
+        border-radius: 25px;
+        margin-top: 20px;
+    }
+    
+    .sorter {
+        border-radius: 25px;
+        width: 20vw;
+        margin-top: 20px;
+    }
+
+    .paging button {
+        width: 20px;
+        height: 20px;
+    }
+
+    footer {
+        clear: left;
+    }
+}
+
+@media (min-width: 1000px) {
+    .options-container{
+        float: left;
+        height: 80vh;
+        flex-direction: column;
+        justify-content: start;
+        width: 20vw;
+    }
+    .search-bar {
+        width: 15vw;
+        border-radius: 25px;
+        margin-top: 20px;
+    }
+    
+    .sorter {
+        border-radius: 25px;
+        width: 15vw;
+        margin-top: 20px;
+    }
+
+    .paging button {
+        width: 20px;
+        height: 20px;
+    }
+
+    footer {
+        clear: left;
+    }
+}
+
+.paging {
+    margin: 10px 5px 5px;
+    
+}
+
+.paging button {
+    color: slategrey;
+    background-color: gainsboro;
+    border-radius: 50px;
+    width: 40px;
+    height: 40px;
+}
+
+.pokedex-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 80vh;
+    width: auto;
+    background-color: aliceblue;
+    overflow: scroll;
+}
+
+.pokemon-display {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.pokemon-container {
+    text-transform: capitalize;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    height: 200px;
+    width: 200px;
+    min-width: 200px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    background-color: lightblue; 
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    margin-left: 0px;
+    padding: 5px;
+}
+
+.name-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.name-container p {
+    background-color: cadetblue;
+    border-radius: 25px;
+    width: 50px;
+    height: 20px;
+    font-size: .7rem;
+    color: white;
+    text-align: center;
+    padding: 4px 0;
+}
+
+.image-container {
+    height: 100%;
+    object-fit: contain;
+}
+
+.image-container img {
+    height: 100%;
+    object-fit: contain;
+}
+
+.type-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.type-container p {
+    margin: 0 3px;
+    border-radius: 5px;
+    padding: 4px 15px;
+    color: white;
+}
+
+.fire {
+    background-color: #F08030;
+}
+.bug {
+    background-color: #A8B820;
+}
+.dark {
+    background-color: #705848;
+}
+.dragon {
+    background-color: #7038F8;
+}
+.electric {
+    background-color: #F8D030;
+}
+.fairy {
+    background-color: #EE99AC;
+}
+.fighting {
+    background-color: #C03028;
+}
+.flying {
+    background-color: #A890F0;
+}
+.ghost {
+    background-color: #705898;
+}
+.grass {
+    background-color: #78C850;
+}
+.ground {
+    background-color: #E0C068;
+}
+.ice {
+    background-color: #98D8D8;
+}
+.normal {
+    background-color: #A8A878;
+}
+.poison {
+    background-color: #A040A0;
+}
+.psychic {
+    background-color: #F85888;
+}
+.rock {
+    background-color: #B8A038;
+}
+.steel {
+    background-color: #B8B8D0;
+}
+.water {
+    background-color: #6890F0;
+}
+.NA {
+    display: none;
+}
+
+footer {
+    height: 10vh;
+    background-color: red;
+}
