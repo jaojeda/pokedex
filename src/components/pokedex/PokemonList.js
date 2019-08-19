@@ -5,7 +5,6 @@ class PokemonList extends Component {
 
     onRender(dom) {
         const pokemon = this.props.pokemon;
-        
         pokemon.forEach(pokemon => {
             
             const props = { pokemon: pokemon };

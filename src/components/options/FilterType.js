@@ -17,7 +17,7 @@ class FilterType extends Components {
 
         return /*html*/`
             <select class="sorter" name="sort" id="sort">
-                <option value="" disabled selected>Sort by...</option>
+                <option value="" disabled selected>Filter by Primary Type</option>
                 <option value="all">All</option>
                 ${optionsHTML}
             </select>   

@@ -1,8 +1,11 @@
 import Component from '../Component.js';
 import Header from './Header.js';
 import PokemonList from '../pokedex/PokemonList.js';
-import pokemon from '../data/pokemon.js';
+// import pokemon from '../data/pokemon.js';
 import FilterType from '../options/FilterType.js';
+import Paging from '../options/Paging.js';
+import { getPokeData } from '../services/pokemon-api.js';
+import hashStorage from '../services/hash-storage.js';
 
 
 class App extends Component {
@@ -13,43 +16,73 @@ class App extends Component {
         dom.prepend(headerDOM);
 
         const props = {
-            pokemon: pokemon    
+            pokemon: []    
         };
+
+
+        const paging = new Paging();
+        const pokedexSection = dom.querySelector('.pokedex-section');
+        pokedexSection.appendChild(paging.renderDOM());
 
         const pokemonList = new PokemonList(props);
-
         const pokemonListDOM = pokemonList.renderDOM();
-
-        const pokedexSection = dom.querySelector('.pokedex-section');
         pokedexSection.appendChild(pokemonListDOM);
         
-        const filterPokemonCards = {
-            pokemon: pokemon,
-            onFilter: (pokemonType) => {
-                let filteredPokemon;
-                if(pokemonType === 'all') {
-                    filteredPokemon = pokemon;
-                }
-                else if(pokemonType === pokemon.type_1) {
-                    filteredPokemon = pokemon.filter(pokemon => {
-                        return pokemon.type_1 === pokemonType;
-                    });
-                }
-                else {
-                    filteredPokemon = pokemon.filter(pokemon => {
-                        return pokemon.type_2 === pokemonType;
-                    });
-                }
+        function loadPokemon() {
 
-                const updateProps = { pokemon: filteredPokemon };
-                pokemonList.update(updateProps);
-            }
-        };
-        const filterPokemon = new FilterType(filterPokemonCards);
-        const filterPokemonDOM = filterPokemon.renderDOM();
+            const options = hashStorage.get();
+            getPokeData(options)
+                .then(data => {
+                    const pokemon = data.results;
+                    const totalCount = data.count;
 
-        const optionsSection = dom.querySelector('.options-container');
-        optionsSection.appendChild(filterPokemonDOM);
+                    pokemonList.update({ pokemon: pokemon });
+                    paging.update({
+                        totalCount: totalCount,
+                        currentPage: +options.page
+
+
+                    });
+                    
+                    const filterPokemonCards = {
+                        pokemon: pokemon,
+                        onFilter: (pokemonType) => {
+                            let filteredPokemon;
+                            if(pokemonType === 'all') {
+                                filteredPokemon = pokemon;
+                            }
+                            else if(pokemonType === pokemon.type_2) {
+                                filteredPokemon = pokemon.filter(pokemon => {
+                                    return pokemon.type_2 === pokemonType;
+                                });
+                            }
+                            else {
+                                filteredPokemon = pokemon.filter(pokemon => {
+                                    return pokemon.type_1 === pokemonType;
+                                });
+                            }
+            
+                            const updateProps = { pokemon: filteredPokemon };
+                            pokemonList.update(updateProps);
+                        }
+                    };
+                    const filterPokemon = new FilterType(filterPokemonCards);
+                    const filterPokemonDOM = filterPokemon.renderDOM();
+                
+                    const optionsSection = dom.querySelector('.options-container');
+                    if(optionsSection.firstChild) {
+                        optionsSection.removeChild(optionsSection.firstChild);
+                    }
+                    optionsSection.appendChild(filterPokemonDOM);
+                    
+                });                 
+        }
+
+        loadPokemon();
+
+        window.addEventListener('hashchange', () => {
+            loadPokemon();
+        });       
     }
 
     renderHTML() {
